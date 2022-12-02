@@ -12,20 +12,24 @@
 
 class AoC22
 {
-private:
+protected:
+	std::string filename;
 
 public:
-	AoC22(){}
-
-	void solve(const char* filename)
+	AoC22(const std::string& Filename)
+		: filename(Filename)
 	{
-		this->read(filename);
+	}
+
+	void solve()
+	{
+		this->read();
 		this->part1();
 		this->part2();
 	}
 
 private:
-	virtual void read(const char* filename) = 0;
+	virtual void read() = 0;
 	virtual void part1() = 0;
 	virtual void part2() = 0;
 

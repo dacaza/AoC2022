@@ -6,8 +6,14 @@ class AoC22_03 : public AoC22
 private:
 	std::vector<int> data;
 
+public:
+	AoC22_03(const std::string& Filename) : AoC22(Filename)
+	{
+		this->solve();
+	}
+
 private:
-	void read(const char* filename) override
+	void read() override
 	{
 
 	}

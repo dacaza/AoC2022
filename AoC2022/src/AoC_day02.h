@@ -15,10 +15,16 @@ private:
 	int DRAW = 3;
 	int WIN = 6;
 
+public:
+	AoC22_02(const std::string& Filename) : AoC22(Filename) 
+	{ 
+		this->solve(); 
+	}
+
 private:
-	void read(const char* filename) override
+	void read() override
 	{
-		std::ifstream myfile(filename);
+		std::ifstream myfile(filename.c_str());
 
 		std::string line;
 		if (myfile.is_open())

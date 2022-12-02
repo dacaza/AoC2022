@@ -6,10 +6,16 @@ class AoC22_01 : public AoC22
 private:
 	std::vector<int> data;
 
-private:
-	void read(const char* filename) override
+public:
+	AoC22_01(const std::string& Filename) : AoC22(Filename)
 	{
-		std::ifstream myfile(filename);
+		this->solve();
+	}
+
+private:
+	void read() override
+	{
+		std::ifstream myfile(filename.c_str());
 
 		std::string line;
 		if (myfile.is_open())

@@ -97,6 +97,34 @@ void ReadFile(const char* filename, std::vector<std::pair<std::string, int>>& da
 
 }
 
+void ReadFile(const char* filename, std::vector<std::pair<std::string, std::string>>& data)
+{
+    std::ifstream myfile(filename);
+
+    std::string line;
+    if (myfile.is_open())
+    {
+        while (getline(myfile, line))
+        {
+
+            std::size_t pos = line.find(" ");
+
+            std::string command = line.substr(0, pos);
+            std::string value = line.substr(pos+1, line.size());
+
+            std::pair<std::string, std::string> commandPair;
+            commandPair.first = command;
+            commandPair.second = value;
+
+            data.push_back(commandPair);
+
+        }
+        myfile.close();
+    }
+    else std::cout << "Unable to open file";
+
+}
+
 void ReadFile(const char* filename, std::vector<std::string>& data)
 {
     std::ifstream myfile(filename);

@@ -13,6 +13,7 @@ void ReadFile01(const char* filename, std::vector<int>& data);
 void ReadFile(const char* filename, std::vector<int>& data);
 void ReadFile(const char* filename, std::vector<float>& data);
 void ReadFile(const char* filename, std::vector<std::pair<std::string, int>>& data);
+void ReadFile(const char* filename, std::vector<std::pair<std::string, std::string>>& data);
 void ReadFile(const char* filename, std::vector<std::string>& data);
 void ReadFile(const char* filename, std::vector<int>& data, std::vector<std::vector<std::vector<std::pair<int,bool>>>>& boards);
 void ReadFile(const char* filename, std::vector<int>& x0, std::vector<int>& y0, std::vector<int>& x1, std::vector<int>& y1);

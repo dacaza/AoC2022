@@ -5,18 +5,17 @@
 void dayXX_part1(const std::vector<std::string>& data);
 void dayXX_part2(const std::vector<std::string>& data);
 
-
 void day01();
 void day01_part1(const std::vector<int>& data);
 void day01_part2(const std::vector<int>& data);
 
-//void day02();
-//void day02_part1(const std::vector<std::pair<std::string, int>>& commands);
-//void day02_part2(const std::vector<std::pair<std::string, int>>& commands);
-//
-//void day03();
-//void day03_part1(const std::vector<std::string>& data);
-//void day03_part2(const std::vector<std::string>& data);
+void day02();
+void day02_part1(const std::vector<std::pair<std::string, std::string>>& data);
+void day02_part2(const std::vector<std::pair<std::string, std::string>>& data);
+
+void day03();
+void day03_part1(const std::vector<std::string>& data);
+void day03_part2(const std::vector<std::string>& data);
 //
 //void day04();
 //void day04_part1(const std::vector<int>& data, std::vector<std::vector<std::vector<std::pair<int, bool>>>> boards);

@@ -16,7 +16,7 @@ void dayXX_part1(const std::vector<std::string>& data)
 
 	std::string result;
 	std::cout << result << std::endl;
-	std::cout << "AoC 2022 - Day 01 - Part 1" << std::endl;
+	std::cout << "AoC 2022 - Day XX - Part 1" << std::endl;
 }
 
 void dayXX_part2(const std::vector<std::string>& data)
@@ -24,5 +24,5 @@ void dayXX_part2(const std::vector<std::string>& data)
 
 	std::string result;
 	std::cout << result << std::endl;
-	std::cout << "AoC 2022 - Day 01 - Part 2" << std::endl;
+	std::cout << "AoC 2022 - Day XX - Part 2" << std::endl;
 }

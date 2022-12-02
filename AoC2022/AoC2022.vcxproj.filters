@@ -16,6 +16,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="data\data01.txt" />
+    <Text Include="data\data02.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -28,6 +29,12 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\dayxx.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\day02.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\day03.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

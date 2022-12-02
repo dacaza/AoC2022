@@ -129,18 +129,17 @@
   <ItemGroup>
     <Text Include="data\data01.txt" />
     <Text Include="data\data02.txt" />
+    <Text Include="data\data03.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\day01.cpp" />
-    <ClCompile Include="src\day02.cpp" />
-    <ClCompile Include="src\day03.cpp" />
-    <ClCompile Include="src\dayxx.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\ReadFile.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\problems.h" />
-    <ClInclude Include="src\ReadFile.h" />
+    <ClInclude Include="src\AoC22.h" />
+    <ClInclude Include="src\AoC_day01.h" />
+    <ClInclude Include="src\AoC_day02.h" />
+    <ClInclude Include="src\AoC_day03.h" />
+    <ClInclude Include="src\AoC_dayXX.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

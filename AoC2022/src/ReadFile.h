@@ -7,6 +7,7 @@
 #include <map>
 #include <set>
 #include <utility>
+#include <algorithm>
 
 
 void ReadFile01(const char* filename, std::vector<int>& data);

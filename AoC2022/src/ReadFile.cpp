@@ -1,5 +1,28 @@
 #include "ReadFile.h"
 
+void ReadFile01(const char* filename, std::vector<int>& data)
+{
+    std::ifstream myfile(filename);
+
+    std::string line;
+    if (myfile.is_open())
+    {
+        while (getline(myfile, line))
+        {
+            if (line.size() > 0)
+            {
+                data.push_back(std::stoi(line));            
+            }
+            else
+            {
+                data.push_back(0);
+            }
+        }
+        myfile.close();
+    }
+    else std::cout << "Unable to open file";
+}
+
 void ReadFile(const char* filename, std::vector<int>& data)
 {
     std::ifstream myfile(filename);

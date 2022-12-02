@@ -7,8 +7,8 @@ void dayXX_part2(const std::vector<std::string>& data);
 
 
 void day01();
-void day01_part1(const std::vector<float>& data);
-void day01_part2(const std::vector<float>& data);
+void day01_part1(const std::vector<int>& data);
+void day01_part2(const std::vector<int>& data);
 
 //void day02();
 //void day02_part1(const std::vector<std::pair<std::string, int>>& commands);

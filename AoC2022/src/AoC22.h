@@ -21,6 +21,7 @@ public:
 	{
 	}
 
+protected:
 	void solve()
 	{
 		this->read();
@@ -29,6 +30,7 @@ public:
 	}
 
 private:
+	
 	virtual void read() = 0;
 	virtual void part1() = 0;
 	virtual void part2() = 0;

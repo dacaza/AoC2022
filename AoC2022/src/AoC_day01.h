@@ -84,7 +84,7 @@ private:
 		int top3 = calories[calories.size() - 3];
 
 		std::cout << "AoC 2022 - Day 01 - Part 2" << std::endl;
-		std::cout << +top1 + top2 + top3 << std::endl;
+		std::cout << top1 + top2 + top3 << std::endl;
 
 	}
 

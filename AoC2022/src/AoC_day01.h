@@ -57,7 +57,7 @@ private:
 			if (calories[i] > max)
 				max = calories[i];
 
-		std::cout << "AoC 2022 - Day 01 - Part 1" << std::endl;
+		std::cout << "AoC 2022 - Day 01 - Part 1: ";
 		std::cout << max << std::endl;
 
 	}
@@ -83,7 +83,7 @@ private:
 		int top2 = calories[calories.size() - 2];
 		int top3 = calories[calories.size() - 3];
 
-		std::cout << "AoC 2022 - Day 01 - Part 2" << std::endl;
+		std::cout << "AoC 2022 - Day 01 - Part 2: ";
 		std::cout << top1 + top2 + top3 << std::endl;
 
 	}

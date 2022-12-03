@@ -35,9 +35,9 @@ private:
 	{
 		std::string items;
 
-		for (int i = 0; i < strA.size(); i++)
+		for (size_t i = 0; i < strA.size(); i++)
 		{
-			for (int j = 0; j < strB.size(); j++)
+			for (size_t j = 0; j < strB.size(); j++)
 			{
 				if (strA[i] == strB[j])
 					items += strA[i];
@@ -47,35 +47,35 @@ private:
 		return items;
 	}
 
-	int getVal(const char& item)
+	size_t getPriority(const char& item)
 	{
 		// ASCII
-		//std::cout << "97 98 99 ..." << std::endl;
-		//std::cout << " a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q  r  s  t  u  v  w  x  y  z" << std::endl;
 		//std::cout << "65 66 67 ..." << std::endl;
 		//std::cout << " A  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P  Q  R  S  T  U  V  W  X  Y  Z" << std::endl;
+		//std::cout << "97 98 99 ..." << std::endl;
+		//std::cout << " a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q  r  s  t  u  v  w  x  y  z" << std::endl;
 
 		// Prioridad
-		//std::cout << "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26" << std::endl;
+		//std::cout << " 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26" << std::endl;
 		//std::cout << " a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q  r  s  t  u  v  w  x  y  z" << std::endl;
 		//std::cout << "27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52" << std::endl;
 		//std::cout << " A  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P  Q  R  S  T  U  V  W  X  Y  Z" << std::endl;
 
-		int sum = 0;
-		int val = int(item);
+		size_t priority = 0;
+		size_t val = int(item);
 
-		if (val < 97)
-			sum = val - 64 + 26;
+		if (val >= int('a'))
+			priority = val - int('a') + 1;
 		else
-			sum = val - 96;
+			priority = val - int('A') + 27;
 
-		return sum;
+		return priority;
 	}
 
 	void part1() override
 	{
-		int sum = 0;
-		for (int iS = 0; iS < data.size(); iS++)
+		size_t sum = 0;
+		for (size_t iS = 0; iS < data.size(); iS++)
 		{
 			int len = data[iS].size()/2;
 
@@ -84,17 +84,17 @@ private:
 
 			char item = this->getItem(strA, strB)[0];
 
-			sum += this->getVal(item);
+			sum += this->getPriority(item);
 		}
 
-		std::cout << "AoC 2022 - Day 03 - Part 1" << std::endl;
+		std::cout << "AoC 2022 - Day 03 - Part 1: ";
 		std::cout << sum << std::endl;
 	}
 
 	void part2() override
 	{
-		int sum = 0;
-		for (int iS = 0; iS < data.size(); iS += 3)
+		size_t sum = 0;
+		for (size_t iS = 0; iS < data.size(); iS += 3)
 		{
 			std::string badge01 = this->getItem(data[iS + 0], data[iS + 1]);
 			std::string badge12 = this->getItem(data[iS + 1], data[iS + 2]);
@@ -107,10 +107,10 @@ private:
 			//std::cout << iS << " " << badge01 << " " << badge12 << std::endl;
 			//std::cout << iS << " " << badge << std::endl;
 
-			sum += this->getVal(badge[0]);
+			sum += this->getPriority(badge[0]);
 		}
 
-		std::cout << "AoC 2022 - Day 03 - Part 2" << std::endl;
+		std::cout << "AoC 2022 - Day 03 - Part 2: ";
 		std::cout << sum << std::endl;
 	}
 };

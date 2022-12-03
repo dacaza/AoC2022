@@ -21,15 +21,15 @@ private:
 	void part1() override
 	{
 
-		std::cout << "AoC 2022 - Day XX - Part 1" << std::endl;
-		std::string result;
+		std::cout << "AoC 2022 - Day XX - Part 1: ";
+		std::string result = "R1";
 		std::cout << result << std::endl;
 	}
 
 	void part2() override
 	{
-		std::cout << "AoC 2022 - Day XX - Part 2" << std::endl;
-		std::string result;
+		std::cout << "AoC 2022 - Day XX - Part 2: ";
+		std::string result = "R2";
 		std::cout << result << std::endl;
 	}
 

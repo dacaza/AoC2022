@@ -56,46 +56,46 @@ private:
 		// B = Y = Paper
 		// C = Z = Scissors
 
-		int sum = 0;
+		int score = 0;
 
 		for (int i = 0; i < data.size(); i++)
 		{
 			if (data[i].second == "X") // Rock
 			{
 				if (data[i].first == "A") // Rock
-					sum += DRAW;
+					score += DRAW;
 				if (data[i].first == "B") // Paper
-					sum += LOSS;
+					score += LOSS;
 				if (data[i].first == "C") // Scissors
-					sum += WIN;
-				sum += ROCK;
+					score += WIN;
+				score += ROCK;
 			}
 
 			if (data[i].second == "Y") // Paper
 			{
 				if (data[i].first == "A") // Rock
-					sum += WIN;
+					score += WIN;
 				if (data[i].first == "B") // Paper
-					sum += DRAW;
+					score += DRAW;
 				if (data[i].first == "C") // Scissors
-					sum += LOSS;
-				sum += PAPER;
+					score += LOSS;
+				score += PAPER;
 			}
 
 			if (data[i].second == "Z") // Scissors
 			{
 				if (data[i].first == "A") // Rock
-					sum += LOSS;
+					score += LOSS;
 				if (data[i].first == "B") // Paper
-					sum += WIN;
+					score += WIN;
 				if (data[i].first == "C") // Scissors
-					sum += DRAW;
-				sum += SCISSORS;
+					score += DRAW;
+				score += SCISSORS;
 			}
 		}
 
-		std::cout << "AoC 2022 - Day 02 - Part 1" << std::endl;
-		std::cout << sum << std::endl;
+		std::cout << "AoC 2022 - Day 02 - Part 1: ";
+		std::cout << score << std::endl;
 
 	}
 
@@ -109,46 +109,46 @@ private:
 		// Y = DRAW
 		// Z = WIN
 
-		int sum = 0;
+		int score = 0;
 
 		for (int i = 0; i < data.size(); i++)
 		{
 			if (data[i].second == "X") // LOSS
 			{
 				if (data[i].first == "A") // Rock
-					sum += SCISSORS;
+					score += SCISSORS;
 				if (data[i].first == "B") // Paper
-					sum += ROCK;
+					score += ROCK;
 				if (data[i].first == "C") // Scissors
-					sum += PAPER;
-				sum += LOSS;
+					score += PAPER;
+				score += LOSS;
 			}
 
 			if (data[i].second == "Y") // DRAW
 			{
 				if (data[i].first == "A") // Rock
-					sum += ROCK;
+					score += ROCK;
 				if (data[i].first == "B") // Paper
-					sum += PAPER;
+					score += PAPER;
 				if (data[i].first == "C") // Scissors
-					sum += SCISSORS;
-				sum += DRAW;
+					score += SCISSORS;
+				score += DRAW;
 			}
 
 			if (data[i].second == "Z") // WIN
 			{
 				if (data[i].first == "A") // Rock
-					sum += PAPER;
+					score += PAPER;
 				if (data[i].first == "B") // Paper
-					sum += SCISSORS;
+					score += SCISSORS;
 				if (data[i].first == "C") // Scissors
-					sum += ROCK;
-				sum += WIN;
+					score += ROCK;
+				score += WIN;
 			}
 		}
 
-		std::cout << "AoC 2022 - Day 02 - Part 2" << std::endl;
-		std::cout << sum << std::endl;
+		std::cout << "AoC 2022 - Day 02 - Part 2: ";
+		std::cout << score << std::endl;
 
 	}
 

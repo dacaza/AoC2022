@@ -130,6 +130,7 @@
     <Text Include="data\data01.txt" />
     <Text Include="data\data02.txt" />
     <Text Include="data\data03.txt" />
+    <Text Include="data\data04.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
@@ -139,6 +140,7 @@
     <ClInclude Include="src\AoC_day01.h" />
     <ClInclude Include="src\AoC_day02.h" />
     <ClInclude Include="src\AoC_day03.h" />
+    <ClInclude Include="src\AoC_day04.h" />
     <ClInclude Include="src\AoC_dayXX.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

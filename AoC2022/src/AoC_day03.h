@@ -40,7 +40,7 @@ private:
 			for (int j = 0; j < strB.size(); j++)
 			{
 				if (strA[i] == strB[j])
-					items+=strA[i];
+					items += strA[i];
 			}
 		}
 
@@ -77,7 +77,6 @@ private:
 		int sum = 0;
 		for (int iS = 0; iS < data.size(); iS++)
 		{
-
 			int len = data[iS].size()/2;
 
 			std::string strA = data[iS].substr(0, len);
@@ -90,13 +89,10 @@ private:
 
 		std::cout << "AoC 2022 - Day 03 - Part 1" << std::endl;
 		std::cout << sum << std::endl;
-
 	}
 
 	void part2() override
 	{
-
-
 		int sum = 0;
 		for (int iS = 0; iS < data.size(); iS += 3)
 		{
@@ -116,7 +112,5 @@ private:
 
 		std::cout << "AoC 2022 - Day 03 - Part 2" << std::endl;
 		std::cout << sum << std::endl;
-
 	}
-
 };

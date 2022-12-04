@@ -5,7 +5,7 @@ class AoC22_04 : public AoC22
 {
 private:
 	std::vector<std::pair<std::pair<int, int>,std::pair<int,int>>> data;
-	int max = 0;
+	size_t max = 0;
 	bool debug = false;
 
 public:
@@ -44,174 +44,23 @@ private:
 
 				data.push_back(assigments);
 
-				if (pair1.first > max)
-					max = pair1.first;
-
-				if (pair1.second > max)
-					max = pair1.second;
-				
-				if (pair2.first > max)
-					max = pair2.first;
-				
-				if (pair2.second > max)
-					max = pair2.second;
-
 				if (debug)
 					printf("%2d-%2d,%2d-%2d\n", pair1.first, pair1.second, pair2.first, pair2.second);
 				
 			}
 
 			if (debug)
-				std::cout << max << std::endl;
+			{
+				this->calcMax();
+				std::cout << "max: " << max << std::endl;
+			}
+
 
 			myfile.close();
 		}
 		else std::cout << "Unable to open file";
 
 		return;
-	}
-
-	void draw(const std::pair<std::pair<int, int>, std::pair<int, int>>& data)
-	{
-		// a-b,c-d
-		int a = data.first.first;
-		int b = data.first.second;
-		int c = data.second.first;
-		int d = data.second.second;
-
-		std::vector<int> first;
-		std::vector<int> second;
-
-		for (size_t i = 1; i < max+1; i++)
-		{
-			if (i >= a && i <= b)
-				first.push_back(i);
-
-			if (i >= c && i <= d)
-				second.push_back(i);
-		}
-
-		std::vector<int> v(first.size()+second.size());
-		std::vector<int>::iterator it;
-
-		std::sort(first.begin(), first.end());
-		std::sort(second.begin(), second.end());
-
-		it = std::set_union(first.begin(), first.end(), second.begin(), second.end(), v.begin());
-		v.resize(it - v.begin());                     
-
-		int k = 0;
-		for (size_t i = 0; i < max; i++)
-		{
-			if (k < v.size())
-			{
-				if (i + 1 < v[k])
-					std::cout << ".";
-				else
-				{
-					if (a > c)
-					{
-						if (b > d)
-						// ..aFFFFb
-						// cSSSSd..
-						{
-							if (v[k] < a)
-								std::cout << "S";
-							else if (v[k] > d)
-								std::cout << "F";
-							else
-								std::cout << "X";
-
-						}
-						else if (b < d)
-						// ..aFFb..
-						// cSSSSSSd
-						{
-							if (v[k] < a)
-								std::cout << "S";
-							else if (v[k] > b)
-								std::cout << "S";
-							else
-								std::cout << "X";
-						}
-						else if (b == d)
-						// ..aFFFFb
-						// cSSSSSSd
-						{
-							if (v[k] < a)
-								std::cout << "S";
-							else
-								std::cout << "X";
-						}
-					}
-					else if (a < c)
-					{
-						if (b > d)
-						// aFFFFFFb
-						// ..cSSd..
-						{
-							if (v[k] < c)
-								std::cout << "F";
-							else if (v[k] > d)
-								std::cout << "F";
-							else
-								std::cout << "X";
-						}
-						else if (b < d)
-						// aFFFFb..
-						// ..cSSSSd
-						{
-							if (v[k] < c)
-								std::cout << "F";
-							else if (v[k] > b)
-								std::cout << "S";
-							else
-								std::cout << "X";
-						}
-						else if (b == d)
-						// aFFFFb
-						// ..cSSd
-						{
-							if (v[k] < c)
-								std::cout << "F";
-							else
-								std::cout << "X";
-						}
-					}
-					else if (a == c)
-					{
-						if (b > d)
-						// aFFFFb
-						// cSSd..
-						{
-							if (v[k] > d)
-								std::cout << "F";
-							else
-								std::cout << "X";
-						}
-						else if (b < d)
-						// aFFb..
-						// cSSSSd
-						{
-							if (v[k] > b)
-								std::cout << "S";
-							else
-								std::cout << "X";
-						}
-						else if (b == d)
-						// aFFFFb
-						// cSSSSd
-							std::cout << "X";
-					}
-
-					k++;
-				}
-			}
-			else
-				std::cout << ".";
-		}
-
-		std::cout << std::endl;
 	}
 
 	void part1() override
@@ -247,26 +96,182 @@ private:
 			int d = data[i].second.second;
 
 			if (a <= d && b >= c || b >= c && a <= c)
-			{
 				count++;
-				if (debug) 
-					std::cout << "Y ";
-			}
-			else
-			{
-				if (debug)
-					std::cout << "N ";
-			}
 
 			if (debug)
-			{
-				printf("%2d-%2d,%2d-%2d ", a,b,c,d);
 				this->draw(data[i]);
-			}
 		}
 
 		std::cout << "AoC 2022 - Day 04 - Part 2: ";
 		std::cout << count << std::endl;
+	}
+
+	void draw(const std::pair<std::pair<int, int>, std::pair<int, int>>& data)
+	{
+		// a-b,c-d
+		int a = data.first.first;
+		int b = data.first.second;
+		int c = data.second.first;
+		int d = data.second.second;
+
+		if (a <= d && b >= c || b >= c && a <= c)
+			std::cout << "Y ";
+		else
+			std::cout << "N ";
+
+		printf("%2d-%2d,%2d-%2d ", a, b, c, d);
+
+		std::vector<int> first;
+		std::vector<int> second;
+
+		for (size_t i = 1; i < max + 1; i++)
+		{
+			if (i >= a && i <= b)
+				first.push_back(i);
+
+			if (i >= c && i <= d)
+				second.push_back(i);
+		}
+
+		std::vector<int> v(first.size() + second.size());
+		std::vector<int>::iterator it;
+
+		std::sort(first.begin(), first.end());
+		std::sort(second.begin(), second.end());
+
+		it = std::set_union(first.begin(), first.end(), second.begin(), second.end(), v.begin());
+		v.resize(it - v.begin());
+
+		int k = 0;
+		for (size_t i = 0; i < max; i++)
+		{
+			if (k < v.size())
+			{
+				if (i + 1 < v[k])
+					std::cout << ".";
+				else
+				{
+					if (a > c)
+					{
+						if (b > d)
+							// ..aFFFFb
+							// cSSSSd..
+						{
+							if (v[k] < a)
+								std::cout << "S";
+							else if (v[k] > d)
+								std::cout << "F";
+							else
+								std::cout << "X";
+
+						}
+						else if (b < d)
+							// ..aFFb..
+							// cSSSSSSd
+						{
+							if (v[k] < a)
+								std::cout << "S";
+							else if (v[k] > b)
+								std::cout << "S";
+							else
+								std::cout << "X";
+						}
+						else if (b == d)
+							// ..aFFFFb
+							// cSSSSSSd
+						{
+							if (v[k] < a)
+								std::cout << "S";
+							else
+								std::cout << "X";
+						}
+					}
+					else if (a < c)
+					{
+						if (b > d)
+							// aFFFFFFb
+							// ..cSSd..
+						{
+							if (v[k] < c)
+								std::cout << "F";
+							else if (v[k] > d)
+								std::cout << "F";
+							else
+								std::cout << "X";
+						}
+						else if (b < d)
+							// aFFFFb..
+							// ..cSSSSd
+						{
+							if (v[k] < c)
+								std::cout << "F";
+							else if (v[k] > b)
+								std::cout << "S";
+							else
+								std::cout << "X";
+						}
+						else if (b == d)
+							// aFFFFb
+							// ..cSSd
+						{
+							if (v[k] < c)
+								std::cout << "F";
+							else
+								std::cout << "X";
+						}
+					}
+					else if (a == c)
+					{
+						if (b > d)
+							// aFFFFb
+							// cSSd..
+						{
+							if (v[k] > d)
+								std::cout << "F";
+							else
+								std::cout << "X";
+						}
+						else if (b < d)
+							// aFFb..
+							// cSSSSd
+						{
+							if (v[k] > b)
+								std::cout << "S";
+							else
+								std::cout << "X";
+						}
+						else if (b == d)
+							// aFFFFb
+							// cSSSSd
+							std::cout << "X";
+					}
+
+					k++;
+				}
+			}
+			else
+				std::cout << ".";
+		}
+
+		std::cout << std::endl;
+	}
+
+	void calcMax()
+	{
+		for (size_t i = 0; i < data.size(); i++)
+		{
+			if (data[i].first.first > max)
+				max = data[i].first.first;
+
+			if (data[i].first.second > max)
+				max = data[i].first.second;
+
+			if (data[i].second.first > max)
+				max = data[i].second.first;
+
+			if (data[i].second.second > max)
+				max = data[i].second.second;
+		}
 	}
 
 };

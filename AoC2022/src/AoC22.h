@@ -1,19 +1,16 @@
 #pragma once
 
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
-#include <iostream>
-#include <map>
-#include <set>
-#include <utility>
 #include <algorithm>
-
 
 class AoC22
 {
 protected:
 	std::string filename;
+	std::vector<std::string> rawData;
 
 public:
 	AoC22(const std::string& Filename)
@@ -21,18 +18,41 @@ public:
 	{
 	}
 
+	void split(const std::string& str, const char& delimiter, std::string& strA, std::string& strB)
+	{
+		size_t pos = str.find(delimiter);
+		strA = str.substr(0, pos);
+		strB = str.substr(pos + 1, str.size() - pos);
+	}
+
 protected:
 	void solve()
 	{
-		this->read();
+		this->readRawData();
+		this->loadData();
 		this->part1();
 		this->part2();
 	}
 
 private:
 	
-	virtual void read() = 0;
+	virtual void loadData() = 0;
 	virtual void part1() = 0;
 	virtual void part2() = 0;
+
+	void readRawData()
+	{
+		std::ifstream myfile(filename.c_str());
+
+		std::string line;
+		if (myfile.is_open())
+		{
+			while (getline(myfile, line))
+				rawData.push_back(line);
+
+			myfile.close();
+		}
+		else std::cout << "Unable to open file\n";
+	}
 
 };

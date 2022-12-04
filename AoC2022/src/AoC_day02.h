@@ -22,36 +22,22 @@ public:
 	}
 
 private:
-	void read() override
+	void loadData() override
 	{
-		std::ifstream myfile(filename.c_str());
-
-		std::string line;
-		if (myfile.is_open())
+		for (std::string line : this->rawData)
 		{
-			while (getline(myfile, line))
-			{
+			std::string command, value;
+			this->split(line, ' ', command, value);
 
-				std::size_t pos = line.find(" ");
+			std::pair<std::string, std::string> commandPair;
+			commandPair = std::make_pair(command, value);
 
-				std::string command = line.substr(0, pos);
-				std::string value = line.substr(pos + 1, line.size());
-
-				std::pair<std::string, std::string> commandPair;
-				commandPair.first = command;
-				commandPair.second = value;
-
-				data.push_back(commandPair);
-
-			}
-			myfile.close();
+			data.push_back(commandPair);
 		}
-		else std::cout << "Unable to open file";
 	}
 
 	void part1() override
 	{
-
 		// A = X = Rock
 		// B = Y = Paper
 		// C = Z = Scissors
@@ -60,43 +46,48 @@ private:
 
 		for (int i = 0; i < data.size(); i++)
 		{
-			if (data[i].second == "X") // Rock
+			std::string& Op = data[i].first;
+			std::string& Me = data[i].second;
+
+			if (Me == "X") // Rock
 			{
-				if (data[i].first == "A") // Rock
+				if (Op == "A") // Rock
 					score += DRAW;
-				if (data[i].first == "B") // Paper
+				if (Op == "B") // Paper
 					score += LOSS;
-				if (data[i].first == "C") // Scissors
+				if (Op == "C") // Scissors
 					score += WIN;
+
 				score += ROCK;
 			}
 
-			if (data[i].second == "Y") // Paper
+			if (Me == "Y") // Paper
 			{
-				if (data[i].first == "A") // Rock
+				if (Op == "A") // Rock
 					score += WIN;
-				if (data[i].first == "B") // Paper
+				if (Op == "B") // Paper
 					score += DRAW;
-				if (data[i].first == "C") // Scissors
+				if (Op == "C") // Scissors
 					score += LOSS;
+
 				score += PAPER;
 			}
 
-			if (data[i].second == "Z") // Scissors
+			if (Me == "Z") // Scissors
 			{
-				if (data[i].first == "A") // Rock
+				if (Op == "A") // Rock
 					score += LOSS;
-				if (data[i].first == "B") // Paper
+				if (Op == "B") // Paper
 					score += WIN;
-				if (data[i].first == "C") // Scissors
+				if (Op == "C") // Scissors
 					score += DRAW;
+
 				score += SCISSORS;
 			}
 		}
 
 		std::cout << "AoC 2022 - Day 02 - Part 1: ";
 		std::cout << score << std::endl;
-
 	}
 
 	void part2() override
@@ -113,43 +104,48 @@ private:
 
 		for (int i = 0; i < data.size(); i++)
 		{
-			if (data[i].second == "X") // LOSS
+			std::string& Op = data[i].first;
+			std::string& Me = data[i].second;
+
+			if (Me == "X") // LOSS
 			{
-				if (data[i].first == "A") // Rock
+				if (Op == "A") // Rock
 					score += SCISSORS;
-				if (data[i].first == "B") // Paper
+				if (Op == "B") // Paper
 					score += ROCK;
-				if (data[i].first == "C") // Scissors
+				if (Op == "C") // Scissors
 					score += PAPER;
+
 				score += LOSS;
 			}
 
-			if (data[i].second == "Y") // DRAW
+			if (Me == "Y") // DRAW
 			{
-				if (data[i].first == "A") // Rock
+				if (Op == "A") // Rock
 					score += ROCK;
-				if (data[i].first == "B") // Paper
+				if (Op == "B") // Paper
 					score += PAPER;
-				if (data[i].first == "C") // Scissors
+				if (Op == "C") // Scissors
 					score += SCISSORS;
+
 				score += DRAW;
 			}
 
-			if (data[i].second == "Z") // WIN
+			if (Me == "Z") // WIN
 			{
-				if (data[i].first == "A") // Rock
+				if (Op == "A") // Rock
 					score += PAPER;
-				if (data[i].first == "B") // Paper
+				if (Op == "B") // Paper
 					score += SCISSORS;
-				if (data[i].first == "C") // Scissors
+				if (Op == "C") // Scissors
 					score += ROCK;
+
 				score += WIN;
 			}
 		}
 
 		std::cout << "AoC 2022 - Day 02 - Part 2: ";
 		std::cout << score << std::endl;
-
 	}
 
 };

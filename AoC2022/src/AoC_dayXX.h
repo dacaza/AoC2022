@@ -13,24 +13,22 @@ public:
 	}
 
 private:
-	void read() override
+	void loadData() override
 	{
+		for (std::string line : this->rawData)
+		{
 
+		}
 	}
 
 	void part1() override
 	{
-
-		std::cout << "AoC 2022 - Day XX - Part 1: ";
-		std::string result = "R1";
-		std::cout << result << std::endl;
+		std::cout << "AoC 2022 - Day XX - Part 1: " << "R1" << std::endl;
 	}
 
 	void part2() override
 	{
-		std::cout << "AoC 2022 - Day XX - Part 2: ";
-		std::string result = "R2";
-		std::cout << result << std::endl;
+		std::cout << "AoC 2022 - Day XX - Part 2: " << "R2" << std::endl;
 	}
 
 };

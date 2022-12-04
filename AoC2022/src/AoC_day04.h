@@ -15,52 +15,31 @@ public:
 	}
 
 private:
-	void read() override
+	void loadData() override
 	{
-		std::ifstream myfile(filename);
-
-		std::string line;
-		if (myfile.is_open())
+		for (std::string line : this->rawData)
 		{
-			while (getline(myfile, line))
-			{
-				int pos0 = line.find(",");
-				std::string assig_1 = line.substr(0, pos0);
-				std::string assig_2 = line.substr(pos0+1, line.size()-pos0);
+			std::string a1, a11, a12;
+			std::string a2, a21, a22;
+			this->split(line, ',', a1, a2);
+			this->split(a1, '-', a11, a12);
+			this->split(a2, '-', a21, a22);
 
-				int pos1 = assig_1.find("-");
-				std::pair<int, int> pair1;
-				pair1.first = std::stoi(assig_1.substr(0, pos1));
-				pair1.second = std::stoi(assig_1.substr(pos1+1, assig_1.size()-pos1));
-
-				int pos2 = assig_2.find("-");
-				std::pair<int, int> pair2;
-				pair2.first = std::stoi(assig_2.substr(0, pos2));
-				pair2.second = std::stoi(assig_2.substr(pos2 + 1, assig_2.size() - pos2));
-
-				std::pair<std::pair<int, int>, std::pair<int, int>> assigments;
-				assigments.first = pair1;
-				assigments.second = pair2;
-
-				data.push_back(assigments);
-
-				if (debug)
-					printf("%2d-%2d,%2d-%2d\n", pair1.first, pair1.second, pair2.first, pair2.second);
+			std::pair<int, int> pair1, pair2;
+			pair1 = std::make_pair(std::stoi(a11), std::stoi(a12));
+			pair2 = std::make_pair(std::stoi(a21), std::stoi(a22));
 				
-			}
+			std::pair<std::pair<int, int>, std::pair<int, int>> assigments;
+			assigments = std::make_pair(pair1, pair2);
+
+			data.push_back(assigments);
 
 			if (debug)
-			{
-				this->calcMax();
-				std::cout << "max: " << max << std::endl;
-			}
-
-
-			myfile.close();
+				printf("%2d-%2d,%2d-%2d\n", pair1.first, pair1.second, pair2.first, pair2.second);				
 		}
-		else std::cout << "Unable to open file";
 
-		return;
+		this->calcMax();
+
 	}
 
 	void part1() override
@@ -70,10 +49,10 @@ private:
 		for (size_t i = 0; i < data.size(); i++)
 		{
 			// a-b,c-d
-			int a = data[i].first.first;
-			int b = data[i].first.second;
-			int c = data[i].second.first;
-			int d = data[i].second.second;
+			int& a = data[i].first.first;
+			int& b = data[i].first.second;
+			int& c = data[i].second.first;
+			int& d = data[i].second.second;
 
 			if (a >= c && b <= d || a <= c && b >= d)
 				count++;
@@ -90,10 +69,10 @@ private:
 		for (size_t i = 0; i < data.size(); i++)
 		{
 			// a-b,c-d
-			int a = data[i].first.first;
-			int b = data[i].first.second;
-			int c = data[i].second.first;
-			int d = data[i].second.second;
+			int& a = data[i].first.first;
+			int& b = data[i].first.second;
+			int& c = data[i].second.first;
+			int& d = data[i].second.second;
 
 			if (a <= d && b >= c || b >= c && a <= c)
 				count++;

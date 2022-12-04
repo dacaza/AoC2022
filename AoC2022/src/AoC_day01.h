@@ -5,6 +5,7 @@ class AoC22_01 : public AoC22
 {
 private:
 	std::vector<int> data;
+	std::vector<int> calories;
 
 public:
 	AoC22_01(const std::string& Filename) : AoC22(Filename)
@@ -13,79 +14,51 @@ public:
 	}
 
 private:
-	void read() override
+	void loadData() override
 	{
-		std::ifstream myfile(filename.c_str());
+		for (std::string line : rawData)
+			if (line.size() > 0)
+				data.push_back(std::stoi(line));
+			else
+				data.push_back(0);
 
-		std::string line;
-		if (myfile.is_open())
-		{
-			while (getline(myfile, line))
-			{
-				if (line.size() > 0)
-				{
-					data.push_back(std::stoi(line));
-				}
-				else
-				{
-					data.push_back(0);
-				}
-			}
-			myfile.close();
-		}
-		else std::cout << "Unable to open file";
-
+		calories = this->addCalories();
+		std::sort(calories.begin(), calories.end());
 	}
 
 	void part1() override
 	{
-		std::vector<int>& item_calories = data;
-
-		std::vector<int> calories;
-		calories.push_back(item_calories[0]);
-
-		for (int i = 1; i < item_calories.size(); i++)
-		{
-			if (item_calories[i] != 0)
-				calories.back() += item_calories[i];
-			else
-				calories.push_back(0);
-		}
-
-		int max = calories[0];
-		for (int i = 1; i < calories.size(); i++)
-			if (calories[i] > max)
-				max = calories[i];
+		int max = calories.back();
 
 		std::cout << "AoC 2022 - Day 01 - Part 1: ";
 		std::cout << max << std::endl;
-
 	}
 
 	void part2() override
 	{
-		std::vector<int>& item_calories = data;
+		size_t n = calories.size();
+		int top1 = calories[n - 1];
+		int top2 = calories[n - 2];
+		int top3 = calories[n - 3];
 
+		std::cout << "AoC 2022 - Day 01 - Part 2: ";
+		std::cout << top1 + top2 + top3 << std::endl;
+	}
+
+	std::vector<int> addCalories()
+	{
 		std::vector<int> calories;
-		calories.push_back(item_calories[0]);
 
-		for (int i = 1; i < item_calories.size(); i++)
+		calories.push_back(data[0]);
+		for (int i = 1; i < data.size(); i++)
 		{
-			if (item_calories[i] != 0)
-				calories.back() += item_calories[i];
+			if (data[i] != 0)
+				calories.back() += data[i];
 			else
 				calories.push_back(0);
 		}
 
-		std::sort(calories.begin(), calories.end());
-
-		int top1 = calories[calories.size() - 1];
-		int top2 = calories[calories.size() - 2];
-		int top3 = calories[calories.size() - 3];
-
-		std::cout << "AoC 2022 - Day 01 - Part 2: ";
-		std::cout << top1 + top2 + top3 << std::endl;
-
+		return calories;
 	}
 
 };

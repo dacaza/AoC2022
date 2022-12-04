@@ -21,9 +21,9 @@ private:
 		{
 			std::string a1, a11, a12;
 			std::string a2, a21, a22;
-			this->split(line, ',', a1, a2);
-			this->split(a1, '-', a11, a12);
-			this->split(a2, '-', a21, a22);
+			this->split(line, ",", a1, a2);
+			this->split(a1, "-", a11, a12);
+			this->split(a2, "-", a21, a22);
 
 			std::pair<int, int> pair1, pair2;
 			pair1 = std::make_pair(std::stoi(a11), std::stoi(a12));
@@ -106,10 +106,10 @@ private:
 		for (size_t i = 1; i < max + 1; i++)
 		{
 			if (i >= a && i <= b)
-				first.push_back(i);
+				first.push_back((int)i);
 
 			if (i >= c && i <= d)
-				second.push_back(i);
+				second.push_back((int)i);
 		}
 
 		std::vector<int> v(first.size() + second.size());

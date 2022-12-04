@@ -24,16 +24,7 @@ public:
 private:
 	void loadData() override
 	{
-		for (std::string line : this->rawData)
-		{
-			std::string command, value;
-			this->split(line, ' ', command, value);
-
-			std::pair<std::string, std::string> commandPair;
-			commandPair = std::make_pair(command, value);
-
-			data.push_back(commandPair);
-		}
+		this->toStr_Str(data, " ");
 	}
 
 	void part1() override

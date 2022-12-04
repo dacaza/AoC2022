@@ -48,5 +48,8 @@
     <ClInclude Include="src\AoC_day05.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="src\AoC_day21_2021.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

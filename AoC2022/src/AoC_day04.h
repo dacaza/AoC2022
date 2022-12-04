@@ -6,6 +6,7 @@ class AoC22_04 : public AoC22
 private:
 	std::vector<std::pair<std::pair<int, int>,std::pair<int,int>>> data;
 	int max = 0;
+	bool debug = false;
 
 public:
 	AoC22_04(const std::string& Filename) : AoC22(Filename)
@@ -55,10 +56,13 @@ private:
 				if (pair2.second > max)
 					max = pair2.second;
 
-				//std::cout << data.back().first.first << "-" << data.back().first.second << "," << data.back().second.first << "-" << data.back().second.second << std::endl;
+				if (debug)
+					printf("%2d-%2d,%2d-%2d\n", pair1.first, pair1.second, pair2.first, pair2.second);
+				
 			}
 
-			// std::cout << max << std::endl;
+			if (debug)
+				std::cout << max << std::endl;
 
 			myfile.close();
 		}
@@ -245,15 +249,20 @@ private:
 			if (a <= d && b >= c || b >= c && a <= c)
 			{
 				count++;
-				//std::cout << "Y ";
+				if (debug) 
+					std::cout << "Y ";
 			}
 			else
 			{
-				//std::cout << "N ";
+				if (debug)
+					std::cout << "N ";
 			}
 
-			//printf("%2d-%2d,%2d-%2d ", a,b,c,d);
-			//this->draw(data[i]);
+			if (debug)
+			{
+				printf("%2d-%2d,%2d-%2d ", a,b,c,d);
+				this->draw(data[i]);
+			}
 		}
 
 		std::cout << "AoC 2022 - Day 04 - Part 2: ";

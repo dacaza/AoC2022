@@ -25,6 +25,12 @@ public:
 		strB = str.substr(pos + 1, str.size() - pos);
 	}
 
+	void split(const std::string& str, const size_t& pos, std::string& strA, std::string& strB)
+	{
+		strA = str.substr(0, pos);
+		strB = str.substr(pos, pos);
+	}
+
 protected:
 	void solve()
 	{

@@ -24,10 +24,11 @@ private:
 		size_t sum = 0;
 		for (size_t iS = 0; iS < data.size(); iS++)
 		{
-			int len = data[iS].size()/2;
+			std::string strA, strB;
+			this->split(data[iS], data[iS].size() / 2, strA, strB);
 
-			std::string strA = data[iS].substr(0, len);
-			std::string strB = data[iS].substr(len, len);
+			//std::cout << iS << " " << data[iS] << std::endl;
+			//std::cout << iS << " " << strA << strB << std::endl;
 
 			char item = this->getItem(strA, strB)[0];
 

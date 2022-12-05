@@ -127,7 +127,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Text Include="data\data01-test.txt" />
     <Text Include="data\data01.txt" />
+    <Text Include="data\data02-test.txt" />
     <Text Include="data\data02.txt" />
     <Text Include="data\data03.txt" />
     <Text Include="data\data04.txt" />

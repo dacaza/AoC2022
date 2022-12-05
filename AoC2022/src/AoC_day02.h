@@ -24,10 +24,11 @@ public:
 private:
 	void loadData() override
 	{
+		data.clear();
 		this->toStr_Str(data, " ");
 	}
 
-	void part1() override
+	std::string part1() override
 	{
 		// A = X = Rock
 		// B = Y = Paper
@@ -77,11 +78,11 @@ private:
 			}
 		}
 
-		std::cout << "AoC 2022 - Day 02 - Part 1: ";
-		std::cout << score << std::endl;
+		std::cout << "AoC 2022 - Day 02 - Part 1";
+		return std::to_string(score);
 	}
 
-	void part2() override
+	std::string part2() override
 	{
 		// A Rock
 		// B Paper
@@ -135,8 +136,8 @@ private:
 			}
 		}
 
-		std::cout << "AoC 2022 - Day 02 - Part 2: ";
-		std::cout << score << std::endl;
+		std::cout << "AoC 2022 - Day 02 - Part 2";
+		return std::to_string(score);
 	}
 
 };

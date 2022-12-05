@@ -17,6 +17,7 @@ public:
 private:
 	void loadData() override
 	{
+		data.clear();
 		for (std::string line : this->rawData)
 		{
 			std::string a1, a11, a12;
@@ -42,7 +43,7 @@ private:
 
 	}
 
-	void part1() override
+	std::string part1() override
 	{
 		int count = 0;
 		
@@ -58,11 +59,11 @@ private:
 				count++;
 		}
 
-		std::cout << "AoC 2022 - Day 04 - Part 1: ";
-		std::cout << count << std::endl;
+		std::cout << "AoC 2022 - Day 04 - Part 1";
+		return std::to_string(count);
 	}
 
-	void part2() override
+	std::string part2() override
 	{
 		int count = 0;
 
@@ -81,8 +82,8 @@ private:
 				this->draw(data[i]);
 		}
 
-		std::cout << "AoC 2022 - Day 04 - Part 2: ";
-		std::cout << count << std::endl;
+		std::cout << "AoC 2022 - Day 04 - Part 2";
+		return std::to_string(count);
 	}
 
 	void draw(const std::pair<std::pair<int, int>, std::pair<int, int>>& data)

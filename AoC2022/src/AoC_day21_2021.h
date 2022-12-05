@@ -23,10 +23,10 @@ public:
 private:
 	void loadData() override
 	{
-
+		data.clear();
 	}
 
-	void part1() override
+	std::string part1() override
 	{
 		int p1 = p1_ini;
 		int p2 = p2_ini;
@@ -67,7 +67,8 @@ private:
 				break;
 		}
 
-		std::cout << "AoC 2021 - Day 21 - Part 1: " << std::min({ score1,score2 }) * dice_count << std::endl;
+		std::cout << "AoC 2021 - Day 21 - Part 2";
+		return std::to_string(std::min({ score1,score2 }) * dice_count);
 	}
 
 	void play(const int& d, int& p)
@@ -79,7 +80,7 @@ private:
 		p = v + 1;
 	}
 
-	void part2() override
+	std::string part2() override
 	{
 		// No se hace con recursividad, sino con programación dinámica. Revisarlo entero
 
@@ -94,7 +95,8 @@ private:
 
 		this->dirac_play(p1, p2, score1, score2, n_vic1, n_vic2);
 
-		std::cout << "AoC 2021 - Day 21 - Part 2: " << std::max({ n_vic1,n_vic2 }) << std::endl;
+		std::cout << "AoC 2021 - Day 21 - Part 2";
+		return std::to_string(std::max({ n_vic1,n_vic2 }));
 	}
 
 	void dirac_play(int& p1, int& p2, unsigned long long int& score1, unsigned long long int& score2, unsigned long long int& n_vic1, unsigned long long int& n_vic2)

@@ -16,6 +16,7 @@ public:
 private:
 	void loadData() override
 	{
+		data.clear();
 		std::vector<std::stack<std::string>> temp_stacks;
 
 		// Load Stacks
@@ -69,7 +70,7 @@ private:
 		}
 	}
 
-	void part1() override
+	std::string part1() override
 	{
 		std::vector<std::stack<std::string>> stacks_1 = stacks;
 
@@ -95,10 +96,11 @@ private:
 		for (int i = 0; i < stacks_1.size(); i++)
 			result += stacks_1[i].top();
 
-		std::cout << "AoC 2022 - Day 05 - Part 1: " << result << std::endl;
+		std::cout << "AoC 2022 - Day 05 - Part 1";
+		return result;
 	}
 
-	void part2() override
+	std::string part2() override
 	{
 		std::vector<std::stack<std::string>> stacks_2 = stacks;
 
@@ -131,6 +133,7 @@ private:
 		for (int i = 0; i < stacks_2.size(); i++)
 			result += stacks_2[i].top();
 
-		std::cout << "AoC 2022 - Day 05 - Part 2: " << result << std::endl;
+		std::cout << "AoC 2022 - Day 05 - Part 2";
+		return result;
 	}
 };

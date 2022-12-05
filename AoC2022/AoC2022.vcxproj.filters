@@ -21,6 +21,8 @@
     <Text Include="data\data04.txt" />
     <Text Include="data\data05.txt" />
     <Text Include="data\data06.txt" />
+    <Text Include="data\data01-test.txt" />
+    <Text Include="data\data02-test.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">

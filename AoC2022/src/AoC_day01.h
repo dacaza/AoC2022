@@ -16,6 +16,7 @@ public:
 private:
 	void loadData() override
 	{
+		data.clear();
 		for (std::string line : rawData)
 			if (line.size() > 0)
 				data.push_back(std::stoi(line));
@@ -26,23 +27,24 @@ private:
 		std::sort(calories.begin(), calories.end());
 	}
 
-	void part1() override
+	std::string part1() override
 	{
 		int max = calories.back();
 
-		std::cout << "AoC 2022 - Day 01 - Part 1: ";
-		std::cout << max << std::endl;
+		std::cout << "AoC 2022 - Day 01 - Part 1";
+		return std::to_string(max);
+
 	}
 
-	void part2() override
+	std::string part2() override
 	{
 		size_t n = calories.size();
 		int top1 = calories[n - 1];
 		int top2 = calories[n - 2];
 		int top3 = calories[n - 3];
 
-		std::cout << "AoC 2022 - Day 01 - Part 2: ";
-		std::cout << top1 + top2 + top3 << std::endl;
+		std::cout << "AoC 2022 - Day 01 - Part 2";
+		return std::to_string(top1 + top2 + top3);
 	}
 
 	std::vector<int> addCalories()

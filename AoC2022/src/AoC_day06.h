@@ -15,20 +15,24 @@ public:
 private:
 	void loadData() override
 	{
+		data.clear();
 		for (std::string line : this->rawData)
 		{
 
 		}
 	}
 
-	void part1() override
+	std::string part1() override
 	{
-		std::cout << "AoC 2022 - Day 06 - Part 1: " << "R1" << std::endl;
+		
+		std::cout << "AoC 2022 - Day 06 - Part 1";
+		return "R1";
 	}
 
-	void part2() override
+	std::string part2() override
 	{
-		std::cout << "AoC 2022 - Day 06 - Part 2: " << "R2" << std::endl;
+		std::cout << "AoC 2022 - Day 06 - Part 2";
+		return "R2";
 	}
 
 };

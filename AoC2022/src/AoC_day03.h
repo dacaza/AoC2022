@@ -15,13 +15,14 @@ public:
 private:
 	void loadData() override
 	{
+		data.clear();
 		for (std::string line : this->rawData)
 			data.push_back(line);
 	}
 
-	void part1() override
+	std::string part1() override
 	{
-		size_t sum = 0;
+		int sum = 0;
 		for (size_t iS = 0; iS < data.size(); iS++)
 		{
 			std::string strA, strB;
@@ -35,13 +36,13 @@ private:
 			sum += this->getPriority(item);
 		}
 
-		std::cout << "AoC 2022 - Day 03 - Part 1: ";
-		std::cout << sum << std::endl;
+		std::cout << "AoC 2022 - Day 03 - Part 1";
+		return std::to_string(sum);
 	}
 
-	void part2() override
+	std::string part2() override
 	{
-		size_t sum = 0;
+		int sum = 0;
 		for (size_t iS = 0; iS < data.size(); iS += 3)
 		{
 			std::string badge01 = this->getItem(data[iS + 0], data[iS + 1]);
@@ -58,8 +59,8 @@ private:
 			sum += this->getPriority(badge[0]);
 		}
 
-		std::cout << "AoC 2022 - Day 03 - Part 2: ";
-		std::cout << sum << std::endl;
+		std::cout << "AoC 2022 - Day 03 - Part 2";
+		return std::to_string(sum);
 	}
 
 	std::string getItem(const std::string& strA, const std::string& strB)

@@ -51,20 +51,29 @@ public:
 protected:
 	void solve()
 	{
-		this->readRawData();
+		std::string name, ext;
+		this->split(filename, ".", name, ext);
+
+		this->readRawData(name + "-test." + ext);
 		this->loadData();
-		this->part1();
-		this->part2();
+		std::cout << " - Test    : " << this->part1() << std::endl;
+		std::cout << " - Test    : " << this->part2() << std::endl;
+
+		this->readRawData(filename);
+		this->loadData();
+		std::cout << " - Solution: " << this->part1() << std::endl;
+		std::cout << " - Solution: " << this->part2() << std::endl;
 	}
 
 private:
 	
 	virtual void loadData() = 0;
-	virtual void part1() = 0;
-	virtual void part2() = 0;
+	virtual std::string part1() = 0;
+	virtual std::string part2() = 0;
 
-	void readRawData()
+	void readRawData(const std::string& filename)
 	{
+		rawData.clear();
 		std::ifstream myfile(filename.c_str());
 
 		std::string line;

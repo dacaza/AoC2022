@@ -20,6 +20,7 @@
     <Text Include="data\data03.txt" />
     <Text Include="data\data04.txt" />
     <Text Include="data\data05.txt" />
+    <Text Include="data\data06.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -49,6 +50,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\AoC_day21_2021.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AoC_day06.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

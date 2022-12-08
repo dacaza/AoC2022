@@ -154,6 +154,7 @@
     <ClInclude Include="src\AoC_day05.h" />
     <ClInclude Include="src\AoC_day06.h" />
     <ClInclude Include="src\AoC_day07.h" />
+    <ClInclude Include="src\AoC_day08.h" />
     <ClInclude Include="src\AoC_day21_2021.h" />
     <ClInclude Include="src\AoC_dayXX.h" />
   </ItemGroup>

@@ -6,7 +6,8 @@
 //#include "AoC_day06.h"
 //#include "AoC_day07.h"
 //#include "AoC_day08.h"
-#include "AoC_day09.h"
+//#include "AoC_day09.h"
+#include "AoC_day10.h"
 
 int main()
 {
@@ -20,5 +21,6 @@ int main()
 	//AoC22_06 day06(path + "data06.txt");
 	//AoC22_07 day07(path + "data07.txt");
 	//AoC22_08 day08(path + "data08.txt");
-	AoC22_09 day09(path + "data09.txt");
+	//AoC22_09 day09(path + "data09.txt");
+	AoC22_10 day10(path + "data10.txt");
 }

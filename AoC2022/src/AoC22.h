@@ -6,6 +6,7 @@
 #include <vector>
 #include <algorithm>
 #include <stack>
+#include <unordered_map>
 
 class AoC22
 {

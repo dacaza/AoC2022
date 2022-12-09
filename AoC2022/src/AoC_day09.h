@@ -34,12 +34,11 @@ private:
 
 	std::string part1() override
 	{
-		Point H, T;
+		Point H = { 0, 0 };
+		Point T = { 0, 0 };
 
-		std::unordered_map<std::string, int> cells;
-
-		// Initial position
-		this->insertCell(T, cells);
+		std::unordered_set<std::string> cells;
+		this->insertPoint(T, cells);
 
 		for (int i = 0; i < data.size(); i++)
 		{
@@ -48,13 +47,9 @@ private:
 
 			for (int v = 0; v < val; v++)
 			{
-				// Move Head
 				this->moveHead(command, H);
-
-				// Move Tail
-				this->moveKnot(H, T);
-
-				this->insertCell(T, cells);
+				this->moveBody(H, T);
+				this->insertPoint(T, cells);
 			}
 		}
 
@@ -64,13 +59,11 @@ private:
 
 	std::string part2() override
 	{
-		Point H;
-		std::vector<Point> Knots(9);
+		Point H = { 0, 0 };
+		std::vector<Point> body(9, { 0, 0 });
 
-		std::unordered_map<std::string, int> cells;
-
-		// Initial position
-		this->insertCell(Knots.back(), cells);
+		std::unordered_set<std::string> cells;
+		this->insertPoint(body.back(), cells);
 
 		for (int i = 0; i < data.size(); i++)
 		{
@@ -79,74 +72,40 @@ private:
 
 			for (int v = 0; v < val; v++)
 			{
-				// Move Head
 				this->moveHead(command, H);
-
-				// Move Tail
-				this->moveKnot(H, Knots[0]);
-				for (int k = 1; k < Knots.size(); k++)
-				{
-					this->moveKnot(Knots[k-1], Knots[k]);
-				}
-
-				this->insertCell(Knots.back(), cells);
+				this->moveBody(H, body[0]);
+				for (int k = 1; k < body.size(); k++)
+					this->moveBody(body[k-1], body[k]);
+				this->insertPoint(body.back(), cells);
 
 				//std::cout << command << " " << v << std::endl;
 				//this->draw(H, Knots);
-
 			}
 
 			//std::cout << command << " " << val << std::endl;
-			//this->draw(H, Knots);
-
+			//this->draw(H, body);
 		}
 
 		std::cout << "AoC 2022 - Day 09 - Part 2";
 		return std::to_string(cells.size());
 	}
 
-	void draw(const Point& H, const std::vector<Point>& Knots)
-	{
-		int N = 100;
-		std::vector<std::vector<std::string>> grid;
-		grid.resize(N);
-		for (int i = 0; i < N; i++)
-			grid[i].resize(N,".");
-
-
-		int x = H.x + N / 2;
-		int y = H.y + N / 2;
-
-		grid[x][y] = "H";
-		for (int i = Knots.size()-1 ; i >=0 ; i--)
-		{
-			int u = Knots[i].x + N / 2;
-			int v = Knots[i].y + N / 2;
-			grid[u][v] = std::to_string(i + 1);
-		}
-
-		for (int i = N-1; i>=0;i--)
-		{
-			for (int j = 0; j<N ; j++)
-			{
-				std::cout << grid[j][i]; 
-			}
-			std::cout << std::endl;
-		}
-
-
-
-	}
-
 	void moveHead(const std::string& command, Point& H)
 	{
-		if (command == "R") H.x += 1;
-		if (command == "L") H.x -= 1;
-		if (command == "U") H.y += 1;
-		if (command == "D") H.y -= 1;
+		if (command == "R") 
+			H.x += 1;
+
+		if (command == "L")
+			H.x -= 1;
+
+		if (command == "U")
+			H.y += 1;
+
+		if (command == "D")
+			H.y -= 1;
 	}
 
-	void moveKnot(const Point& H, Point& T)
+	void moveBody(const Point& H, Point& T)
 	{
 		if (T.x - H.x == 2)
 		{
@@ -225,10 +184,37 @@ private:
 		}
 	}
 
-	void insertCell(const Point& P, std::unordered_map<std::string, int>& map)
+	void draw(const Point& H, const std::vector<Point>& body)
 	{
-		std::string posP = std::to_string(P.x) + "," + std::to_string(P.y);
-		map.insert(std::pair<std::string, int>(posP, 1));
+		int N = 100;
+		std::vector<std::vector<std::string>> grid;
+		grid.resize(N);
+		for (int i = 0; i < N; i++)
+			grid[i].resize(N, ".");
+
+		int x = H.x + N / 2;
+		int y = H.y + N / 2;
+
+		grid[x][y] = "H";
+		for (size_t i = body.size() - 1; i >= 0; i--)
+		{
+			int u = body[i].x + N / 2;
+			int v = body[i].y + N / 2;
+			grid[u][v] = std::to_string(i + 1);
+		}
+
+		for (int i = N - 1; i >= 0; i--)
+		{
+			for (int j = 0; j < N; j++)
+				std::cout << grid[j][i];
+
+			std::cout << std::endl;
+		}
+	}
+
+	void insertPoint(const Point& P, std::unordered_set<std::string>& set)
+	{
+		set.insert(std::to_string(P.x) + "," + std::to_string(P.y));
 	}
 
 };

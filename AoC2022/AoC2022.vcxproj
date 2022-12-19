@@ -151,6 +151,8 @@
     <Text Include="data\data11.txt" />
     <Text Include="data\data12-test.txt" />
     <Text Include="data\data12.txt" />
+    <Text Include="data\data15-test.txt" />
+    <Text Include="data\data15.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
@@ -169,6 +171,7 @@
     <ClInclude Include="src\AoC_day10.h" />
     <ClInclude Include="src\AoC_day11.h" />
     <ClInclude Include="src\AoC_day12.h" />
+    <ClInclude Include="src\AoC_day15.h" />
     <ClInclude Include="src\AoC_day21_2021.h" />
     <ClInclude Include="src\AoC_dayXX.h" />
   </ItemGroup>

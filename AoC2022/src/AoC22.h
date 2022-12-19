@@ -11,6 +11,12 @@
 #include <unordered_set>
 #include <queue>
 
+struct Point
+{
+	int x = 0;
+	int y = 0;
+};
+
 class AoC22
 {
 protected:

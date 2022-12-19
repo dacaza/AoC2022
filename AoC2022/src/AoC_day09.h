@@ -1,11 +1,7 @@
 #pragma once
 #include "AoC22.h"
 
-struct Point
-{
-	int x = 0;
-	int y = 0;
-};
+
 
 class AoC22_09 : public AoC22
 {

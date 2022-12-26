@@ -43,19 +43,18 @@ private:
 		for (int i = 0; i < data.size(); i++)
 			sum += data[i];
 
-
 		int64_t num = sum;
 		int64_t rest = 0; 
 
 		std::string result;
-		bool stop = false; 
 
-		while (!stop)
+		while (num > 1)
 		{
 			rest = num % 5;
 
 			if (rest > 2)
 				rest = rest-5;
+
 			if (rest == -2)
 				result = "=" + result;
 			else if (rest == -1)
@@ -64,16 +63,7 @@ private:
 				result = std::to_string(rest) + result;
 
 			num = (num - rest)/5;
-			if (num < 1)
-				stop = true;
 		}
-
-		//int a0 = data[0] % 5;
-		//int a1 = (data[0] - a0) / 5;
-		//int a2 = a1 % 5;
-		//if (a2 > 2)
-		//	a2 = a2 - 5;
-		//int a3 = (a1 -a2)%5;
 
 		std::cout << "AoC 2022 - Day 25 - Part 1";
 		return result;

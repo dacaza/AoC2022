@@ -45,6 +45,8 @@
     <Text Include="data\data21-test.txt" />
     <Text Include="data\data25.txt" />
     <Text Include="data\data25-test.txt" />
+    <Text Include="data\data14.txt" />
+    <Text Include="data\data14-test.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -104,6 +106,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\AoC_day25.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AoC_day14.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

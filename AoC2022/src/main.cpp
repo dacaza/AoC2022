@@ -13,7 +13,8 @@
 //#include "AoC_day14.h"
 //#include "AoC_day15.h"
 //#include "AoC_day21.h"
-#include "AoC_day23.h"
+#include "AoC_day18.h"
+//#include "AoC_day23.h"
 //#include "AoC_day25.h"
 
 int main()
@@ -35,6 +36,7 @@ int main()
 	//AoC22_14 day14(path + "data14.txt");
 	//AoC22_15 day15(path + "data15.txt");
 	//AoC22_21 day21(path + "data21.txt");
-	AoC22_23 day23(path + "data23.txt");
+	AoC22_18 day18(path + "data18.txt");
+	//AoC22_23 day23(path + "data23.txt");
 	//AoC22_25 day25(path + "data25.txt");
 }

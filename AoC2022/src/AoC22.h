@@ -15,7 +15,13 @@ struct Point
 {
 	int x = 0;
 	int y = 0;
+	int z = 0;
 };
+
+bool sortPoints(const Point& P, const Point& Q)
+{
+	return (P.x * P.x + P.y * P.y + P.z * P.z < Q.x* Q.x + Q.y * Q.y + Q.z * Q.z);
+}
 
 class AoC22
 {

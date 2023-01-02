@@ -157,6 +157,8 @@
     <Text Include="data\data15.txt" />
     <Text Include="data\data21-test.txt" />
     <Text Include="data\data21.txt" />
+    <Text Include="data\data23-test.txt" />
+    <Text Include="data\data23.txt" />
     <Text Include="data\data25-test.txt" />
     <Text Include="data\data25.txt" />
   </ItemGroup>
@@ -181,6 +183,7 @@
     <ClInclude Include="src\AoC_day15.h" />
     <ClInclude Include="src\AoC_day21.h" />
     <ClInclude Include="src\AoC_day21_2021.h" />
+    <ClInclude Include="src\AoC_day23.h" />
     <ClInclude Include="src\AoC_day25.h" />
     <ClInclude Include="src\AoC_dayXX.h" />
   </ItemGroup>
